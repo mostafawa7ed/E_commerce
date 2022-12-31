@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "E-CommerceApp",
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const OnBoading(),

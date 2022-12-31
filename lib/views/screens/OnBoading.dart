@@ -1,47 +1,36 @@
-import 'package:flutter/cupertino.dart';
+import 'package:app/controller/onbordingcontroller.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 import '../../core/constant/Colors.dart';
-import '../../data/datasource/static/static.dart';
+import '../widgets/onbording/onbondingwidget.dart';
 
-class OnBoading extends StatelessWidget {
+class OnBoading extends GetView<OnBordingControllerImp> {
   const OnBoading({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Get.put(OnBordingControllerImp());
     return Scaffold(
         backgroundColor: AppColor.white,
         body: SafeArea(
-          child: PageView.builder(
-              itemCount: onBordingModelList.length,
-              itemBuilder: (context, i) {
-                return Column(
+          child: Column(
+            children: [
+              Expanded(
+                flex: 3,
+                child: GenratePage(),
+              ),
+              Expanded(
+                flex: 1,
+                child: Column(
                   children: [
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text("${onBordingModelList[i].title}",
-                        style: const TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Image.asset("${onBordingModelList[i].image}"),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Container(
-                      child: Text("${onBordingModelList[i].body}",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              height: 2,
-                              color: AppColor.black54,
-                              fontSize: 17)),
-                      width: double.infinity,
-                    )
+                    GenerateDotController(),
+                    const Padding(padding: EdgeInsets.only(top: 20)),
+                    OnBordingButtom(),
                   ],
-                );
-              }),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
