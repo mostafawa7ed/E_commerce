@@ -12,7 +12,7 @@ import firebase_messaging
 import flutter_local_notifications
 import geolocator_apple
 import path_provider_macos
-import shared_preferences_macos
+import shared_preferences_foundation
 import sqflite
 import url_launcher_macos
 
