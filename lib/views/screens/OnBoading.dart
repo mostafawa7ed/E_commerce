@@ -1,15 +1,12 @@
-import 'package:app/controller/onbordingcontroller.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../core/constant/Colors.dart';
 import '../widgets/onbording/onbondingwidget.dart';
 
-class OnBoading extends GetView<OnBordingControllerImp> {
+class OnBoading extends StatelessWidget {
   const OnBoading({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Get.put(OnBordingControllerImp());
     return Scaffold(
         backgroundColor: AppColor.white,
         body: SafeArea(
