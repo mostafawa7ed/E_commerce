@@ -4,22 +4,21 @@ import '../../model/OnBordingmodel.dart';
 List<OnBordingModel> onBordingModelList = [
   OnBordingModel(
       title: "Choose Product",
-      image: ImageAssets.OnBordingImageOne,
+      image: AppImageAssets.OnBordingImageOne,
       body:
           "We have a 100k Product \n your product from our \nE-Commerce shop ."),
   OnBordingModel(
       title: "Easy Checkout & safe Payment",
-      image: ImageAssets.OnBordingImageOne,
+      image: AppImageAssets.OnBordingImageTow,
       body:
           "Easy Checkout & safe Payment method Trusted by our Customers from all over world"),
   OnBordingModel(
       title: "Track Your Order ",
-      image: ImageAssets.OnBordingImageOne,
-      body:
-          "We have a 100k Product \n your product from our \nE-Commerce shop ."),
+      image: AppImageAssets.OnBordingImageThree,
+      body: "Just enter your AWB tracking number or Order ID & it's done ."),
   OnBordingModel(
       title: "Fast Delivery",
-      image: ImageAssets.OnBordingImageOne,
+      image: AppImageAssets.OnBordingImageFour,
       body:
           "We have a 100k Product \n your product from our \nE-Commerce shop ."),
 ];
