@@ -1,8 +1,10 @@
 import 'package:app/core/constant/Colors.dart';
 import 'package:app/core/constant/approute.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import '../../../core/constant/imageassets.dart';
 import '../../../core/function/mediaqueryfun.dart';
 import '../../widgets/cutomformfaild.dart';
@@ -45,7 +47,48 @@ class LogIn extends StatelessWidget {
                     padding: EdgeInsets.symmetric(
                         horizontal: mediaQuereyFun(size.width, 13, 0)),
                     color: const Color.fromARGB(255, 108, 99, 255),
-                    onPressed: () {},
+                    onPressed: () async {
+                      final bool isConnected =
+                          await InternetConnectionChecker().hasConnection;
+
+                      bool flag = false;
+                      print(formKey.currentState!.validate());
+                      var formdata = formKey.currentState;
+                      if (isConnected) {
+                        if (formdata!.validate()) {
+                          try {
+                            final userCredential = await FirebaseAuth.instance
+                                .signInWithEmailAndPassword(
+                              email: email.text,
+                              password: password.text,
+                            )
+                                .then((value) {
+                              Navigator.of(context)
+                                  .pushReplacementNamed(AppRoute.homepage);
+                            }).catchError((onError) {
+                              print(onError.toString());
+                              // ignore: avoid_single_cascade_in_expression_statements
+                              AwesomeDialog(
+                                context: context,
+                                keyboardAware: true,
+                                dismissOnBackKeyPress: false,
+                                dialogType: DialogType.warning,
+                                animType: AnimType.bottomSlide,
+                                title: 'Error LogIn',
+                                // padding: const EdgeInsets.all(5.0),
+                                desc: '${onError.toString()}',
+                                btnOkOnPress: () {},
+                              )..show();
+                            });
+                            print(userCredential.user!.uid.isEmpty);
+
+                            //return _mapFirebaseUser(userCredential.user);
+                          } catch (e) {}
+                        }
+                      } else {
+                        print("connection Error");
+                      }
+                    },
                     child: Text(
                       "LogIn",
                       style: TextStyle(

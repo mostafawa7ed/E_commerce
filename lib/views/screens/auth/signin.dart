@@ -32,7 +32,7 @@ class SignIn extends StatelessWidget {
                       style: TextStyle(
                           fontSize: mediaQuereyFun(size.width, 6, 0),
                           fontWeight: FontWeight.bold)),
-                  Image.asset(AppImageAssets.logInImage, fit: BoxFit.fill),
+                  Image.asset(AppImageAssets.signin, fit: BoxFit.fill),
                   CutomTextForm(
                     size: size,
                     textEditingController: name,
@@ -64,14 +64,15 @@ class SignIn extends StatelessWidget {
                       if (isConnected) {
                         if (formdata!.validate()) {
                           try {
-                            checkconncetion();
+                            //checkconncetion();
                             UserCredential credential = await FirebaseAuth
                                 .instance
                                 .createUserWithEmailAndPassword(
                               email: email.text,
                               password: password.text,
                             );
-                            // ignore: avoid_single_cascade_in_expression_statements
+                            print("${credential.user!.uid}");
+                            // ignore: avoid_single_cascade_in_expression_statements, use_build_context_synchronously
                             AwesomeDialog(
                               context: context,
                               keyboardAware: true,

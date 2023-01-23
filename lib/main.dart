@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
                   TextStyle(height: 2, color: AppColor.black54, fontSize: 17)),
         ),
         //home: const OnBoading(),
-        initialRoute: AppRoute.signin,
+        initialRoute: AppRoute.bording,
         routes: route,
       ),
     );

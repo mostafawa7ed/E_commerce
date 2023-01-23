@@ -7,4 +7,5 @@ class AppImageAssets {
   static const String logInImage = "$rootImage/login.png";
   static const String google = "$rootImage/google.png";
   static const String facebook = "$rootImage/facebook.jpg";
+  static const String signin = "$rootImage/signup.png";
 }
